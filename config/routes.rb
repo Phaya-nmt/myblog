@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+
+  get 'posts/show'
+
   devise_for :users
-  resources :posts
+
+  resources :posts, only: [:index, :show]
+
+  namespace :users do
+    resources :posts
+  end
+
+
+
+
+
   # get 'pages/index'
   root 'posts#index'
 
